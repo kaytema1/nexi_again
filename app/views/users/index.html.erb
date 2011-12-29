@@ -1,0 +1,13 @@
+<% title "Users" %>
+<table>
+	<tr>
+		<th>Name</th>
+	</tr>
+	<% for user in @users %>
+	<tr>
+		<td><%= user.username %></td>
+<td><%= link_to "Show", user %></td>
+	</tr>
+	<% end %>
+	
+</table>

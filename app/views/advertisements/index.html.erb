@@ -1,0 +1,21 @@
+<% title "Advertisements" %>
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Permalink</th>
+    <th>Page</th>
+  </tr>
+  <% for advertisement in @advertisements %>
+    <tr>
+      <td><%= advertisement.image %></td>
+      <td><%= advertisement.permalink %></td>
+      <td><%= advertisement.page_id %></td>
+      <td><%= link_to "Show", advertisement %></td>
+      <td><%= link_to "Edit", edit_advertisement_path(advertisement) %></td>
+      <td><%= link_to "Destroy", advertisement, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Advertisement", new_advertisement_path %></p>
