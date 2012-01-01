@@ -1,0 +1,33 @@
+<%= form_tag jobs_path, :method => :get do %>
+<p>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+<% title "Jobs" %>
+<table>
+	<tr>
+		<th>Image</th>
+		<th>Title</th>
+		<th>Company</th>
+		<th>Application Due</th>
+		<th>Job Description</th>
+		<th>Permalink</th>
+	</tr>
+	<% for job in @jobs %>
+	<tr>
+		<td><%= image_tag job.image.url ,:size => "100x100" %> </td>
+		<td><%= job.title %></td>
+		<td><%= job.company %></td>
+		<td><%= job.application_due %></td>
+		<td><%= job.job_description %></td>
+		<td><%= job.permalink %></td>
+		<td><%= link_to "Show", job %></td>
+		<td><%= link_to "Edit", edit_job_path(job) %></td>
+		<td><%= link_to "Destroy", job, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
+</table>
+<p>
+	<%= link_to "New Job", new_job_path %>
+</p>

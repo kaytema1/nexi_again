@@ -1,15 +1,458 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+		<title><%= content_for?(:title) ? yield(:title) : "NexInnova Web Platform" %></title>
+		<!-- Stylesheets -->
+		<%= stylesheet_link_tag "main-stylesheet.css" %>
+		<%= stylesheet_link_tag "sexy-slider.css" %>
+		<%= stylesheet_link_tag "shortcodes.css" %> <!-- JavaScripts -->
+		<%= javascript_include_tag "jquery.min.js" %>
+		<%= javascript_include_tag "jquery.placeholder.min.js" %>
+		<%= javascript_include_tag "cufon-yui.js" %>
+		<%= javascript_include_tag "cufon-replace.js" %>
+		<%= javascript_include_tag "cachet.font.js" %>
+		<%= javascript_include_tag "jquery.sexyslider.js" %>
+		<%= javascript_include_tag "text-scroller.js" %>
 		<%= stylesheet_link_tag "application" %>
-		<%= javascript_include_tag :defaults %>
+
 		<%= csrf_meta_tag %>
 		<%= yield(:head) %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// hide #back-top first
+				// $("#back-top").hide();
+				// fade in #back-top
+				$(function() {
+					$(window).scroll(function() {
+					});
+					// scroll body to 0px on click
+					$('.back-to-top a').click(function() {
+						$('body,html').animate({
+							scrollTop : 0
+						}, 800);
+						return false;
+					});
+				});
+			});
+
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#homepage-slider").SexySlider({
+					width : 871,
+					height : 350,
+					delay : 3000,
+					strips : 20,
+					autopause : true,
+					navigation : '#navigation',
+					control : '#control',
+					effect : 'fade',
+					titleStyle : 'false'
+				});
+			});
+
+		</script>
 	</head>
 	<body>
+		<!-- BEGIN .main-content-wrapper -->
+		<div class="main-content-wrapper">
+			<!-- BEGIN .main-content -->
+			<div class="main-content">
+				<!-- BEGIN .main-header -->
+				<div class="main-header">
+					<!-- <div class="logo">
+					<a href="homepage-3.html"><img src="images/logo-kernel-1.png" alt="KERNEL" width="166" height="28" /></a>
+					</div> -->
+					<div class="text-logo">
+						NexInnova
+					</div>
+					<div class="search">
+						<form action="">
+							<input type="text" class="input-text" placeholder="search here" />
+							<input type="submit" class="input-submit" value="" />
+						</form>
+					</div>
+					<div class="social">
+						<%= link_to (image_tag "ico-digg-1.png", :size => "19x19", :alt => "DIGG" ), "#" %>
+						<%= link_to (image_tag "ico-youtube-1.png", :size => "19x19", :alt => "YouTube"), "#" %>
+						<%= link_to (image_tag "ico-flickr-1.png", :size => "19x19", :alt => "Flickr"), "#" %>
+						<%= link_to (image_tag "ico-facebook-1.png", :size => "19x19", :alt => "Facebook"), "#" %>
+						<%= link_to (image_tag "ico-twitter-1.png", :size => "19x19", :alt => "Twitter"), "#" %>
+						<%= link_to (image_tag "ico-rss-1.png", :size => "19x19", :alt => "RSS"), "#" %>
+					</div>
+					<!-- END .main-header -->
+				</div>
+				<!-- BEGIN .main-menu-wrapper -->
+				<div class="main-menu-wrapper">
+					<span class="corner-left">&nbsp;</span>
+					<ul>
+						<% for page in @pages %>
+						<li>
+							<%= link_to page.title , page_path(page) %>
+						</li>
+						<% end %>
+						<li>
+							<a href="archive.html">Archive</a>
+						</li>
+						<li>
+							<a href="archive.html">Jobs</a>
+						</li>
+					</ul>
+					<!-- END .main-menu-wrapper -->
+				</div>
+				<!-- BEGIN .breaking-wrapper -->
+				<div class="breaking-wrapper">
+					<p>
+						Breaking:
+					</p>
+					<div class="horizontal-scroller">
+						<div id="scrollingtext">
+							<%= image_tag("ico-list-bullet-1.png", :size => "7x6", :alt => "" )%> <%= link_to "Lorem ipsum dolor sit amet, consectetur adipiscing rnare laoreet vehicula ", "#" %>
+							<%= image_tag("ico-list-bullet-1.png", :size => "7x6", :alt => "" )%><%= link_to "Lorem ipsum dolor sit amet, consectetur adipiscing rnare laoreet vehicula ", "#" %>
+							<%= image_tag("ico-list-bullet-1.png", :size => "7x6", :alt => "" )%><%= link_to "Lorem ipsum dolor sit amet, consectetur adipiscing rnare laoreet vehicula ", "#" %>
+						</div>
+					</div>
+					<!-- END .breaking-wrapper -->
+				</div>
+				<!-- BEGIN .homepage-slider-wrapper -->
+				<div class="homepage-slider-wrapper">
+					<!-- BEGIN .homepage-slider -->
+					<div class="homepage-slider">
+						<div id="homepage-slider">
+							<%= image_tag("photos/photo-1.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+							<%= image_tag("photos/photo-2.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+							<%= image_tag("photos/photo-3.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+							<%= image_tag("photos/photo-4.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+							<%= image_tag("photos/photo-5.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+							<%= image_tag("photos/photo-6.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+							<%= image_tag("photos/photo-7.jpg", :alt => 'Lorem ipsum dolor sit amet, consectetur adipiscing elitam eunisi dapibus adipiscing magna sed cursus sapien condimentum' ,:size => "871x350")%>
+						</div>
+						<div id="navigation"></div>
+						<div id="control"></div>
+						<div class="shadow">
+							&nbsp;
+						</div>
+						<!-- END .homepage-slider -->
+					</div>
+					<!-- END .homepage-slider-wrapper -->
+				</div>
+				<!-- BEGIN .homepage-title -->
+				<div class="homepage-title">
+					Etiam ac ultricies sem. In lobortis urna a nulla tristique ut rutrum eros. Morbi vehicula accumsan neque, tempor sollicitudin nulla auctor eu. <!-- END .homepage-title -->
+				</div>
+				<!-- BEGIN .homepage-block-1 -->
+				<div class="homepage-block-1">
+					<!-- BEGIN .layout-4 -->
+					<div class="layout-4">
+						<!-- BEGIN .item-wrapper -->
+						<div class="item-wrapper">
+							<div class="layout-4-title">
+								<b>Latest in Movies</b>
+							</div>
+							<div class="featured-item">
+								<%= link_to image_tag("photos/photo-89.jpg", :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5><a href="#">Aenean iaculis, risus eget solli citudi pretiumligula redub</a></h5>
+								<div class="info">
+									January 10, 2011&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#">0 comments</a>
+								</div>
+								<p class="intro">
+									Lorem ipsum dolor sit amet, consectetur adip iscing elit. Cras lacus mauris, molestie nec placerat at, dapibus id felis. Sed et odio tellus.
+								</p>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-25.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas pretium facilisis lectus sed</a></h5>
+									<p class="info">
+										February 20, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-20.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Aenean iaculis, risus eget citudin pretiumligula</a></h5>
+									<p class="info">
+										May 15, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-21.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Vestibulum ante ipsum prim in faucibus</a></h5>
+									<p class="info">
+										April 20, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-22.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit</a></h5>
+									<p class="info">
+										April 25, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-24.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit</a></h5>
+									<p class="info">
+										April 14, 2011
+									</p>
+								</div>
+							</div>
+							<p class="show-all">
+								<a href="#" class="btn-1 btn-1-color-default"><span>Show all movie articles</span></a>
+							</p>
+							<!-- END .item-wrapper -->
+						</div>
+						<!-- BEGIN .item-wrapper -->
+						<div class="item-wrapper">
+							<div class="layout-4-title">
+								<b>Latest in Movies</b>
+							</div>
+							<div class="featured-item">
+								<%= link_to image_tag("photos/photo-89.jpg", :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5><a href="#">Aenean iaculis, risus eget solli citudi pretiumligula redub</a></h5>
+								<div class="info">
+									January 10, 2011&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#">0 comments</a>
+								</div>
+								<p class="intro">
+									Lorem ipsum dolor sit amet, consectetur adip iscing elit. Cras lacus mauris, molestie nec placerat at, dapibus id felis. Sed et odio tellus.
+								</p>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-25.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas pretium facilisis lectus sed</a></h5>
+									<p class="info">
+										February 20, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-20.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Aenean iaculis, risus eget citudin pretiumligula</a></h5>
+									<p class="info">
+										May 15, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-21.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Vestibulum ante ipsum prim in faucibus</a></h5>
+									<p class="info">
+										April 20, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-22.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit</a></h5>
+									<p class="info">
+										April 25, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-24.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit</a></h5>
+									<p class="info">
+										April 14, 2011
+									</p>
+								</div>
+							</div>
+							<p class="show-all">
+								<a href="#" class="btn-1 btn-1-color-default"><span>Show all movie articles</span></a>
+							</p>
+							<!-- END .item-wrapper -->
+						</div>
+						<!-- BEGIN .item-wrapper -->
+						<div class="item-wrapper last">
+							<div class="layout-4-title">
+								<b>Latest in Movies</b>
+							</div>
+							<div class="featured-item">
+								<%= link_to image_tag("photos/photo-89.jpg", :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5><a href="#">Aenean iaculis, risus eget solli citudi pretiumligula redub</a></h5>
+								<div class="info">
+									January 10, 2011&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#">0 comments</a>
+								</div>
+								<p class="intro">
+									Lorem ipsum dolor sit amet, consectetur adip iscing elit. Cras lacus mauris, molestie nec placerat at, dapibus id felis. Sed et odio tellus.
+								</p>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-25.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas pretium facilisis lectus sed</a></h5>
+									<p class="info">
+										February 20, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-20.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Aenean iaculis, risus eget citudin pretiumligula</a></h5>
+									<p class="info">
+										May 15, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-21.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Vestibulum ante ipsum prim in faucibus</a></h5>
+									<p class="info">
+										April 20, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-22.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit</a></h5>
+									<p class="info">
+										April 25, 2011
+									</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="image">
+									<%= link_to image_tag("photos/photo-24.jpg", :alt => "", :size => "50x50"),"#" %>
+								</div>
+								<div class="text">
+									<h5><a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit</a></h5>
+									<p class="info">
+										April 14, 2011
+									</p>
+								</div>
+							</div>
+							<p class="show-all">
+								<a href="#" class="btn-1 btn-1-color-default"><span>Show all movie articles</span></a>
+							</p>
+							<!-- END .item-wrapper -->
+						</div>
+						<!-- END .layout-4 -->
+					</div>
+					<!-- END .homepage-block-1 -->
+				</div>
+				<!-- BEGIN .main-footer -->
+				<div class="main-footer">
+					<div class="about">
+						<h2>About NexInnova Advisory Group</h2>
+						<div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu nisi ante, dapibus adipiscing magna. Cras a leo a magna. Phasellus enim libero, blandit ac tempor
+							</p>
+							<p>
+								Nulla hendrerit nunc sit amet nunc rutrum sed cursus sapien condimentum.
+							</p>
+							<p>
+								<a href="#" class="purchase">Purchase KERNEL at ThemeForest</a>
+							</p>
+						</div>
+					</div>
+					<div class="categories">
+						<h2>Categories</h2>
+						<ul>
+							<li>
+								<a href="#">Technology</a>
+							</li>
+							<li>
+								<a href="#">Fashion &amp; Design</a>
+							</li>
+							<li>
+								<a href="#">Movies</a>
+							</li>
+							<li>
+								<a href="#">Music</a>
+							</li>
+							<li>
+								<a href="#">Games &amp; Entertainment</a>
+							</li>
+							<li>
+								<a href="#">Cars, Bikes &amp; Bicycles</a>
+							</li>
+							<li>
+								<a href="#">Uncategorized</a>
+							</li>
+						</ul>
+					</div>
+					<div class="social">
+						<h2>Social networks</h2>
+						<ul>
+							<li>
+								<a href="#" class="twitter">Follow us on Twitter</a>
+							</li>
+							<li>
+								<a href="#" class="facebook">Friend un on Facebook</a>
+							</li>
+							<li>
+								<a href="#" class="digg">Dig us at Digg</a>
+							</li>
+							<li>
+								<a href="#" class="youtube">Watch our YouTube channel</a>
+							</li>
+							<li>
+								<a href="#" class="flickr">Check our photos at Flickr</a>
+							</li>
+							<li>
+								<a href="#" class="rss">RSS feeds</a>
+							</li>
+						</ul>
+					</div>
+					<div class="copyright">
+						<div class="back-to-top">
+							<a href="#top"><span>go back to the top</span></a>
+						</div>
+						Copyright &amp; Design © 2011 by <b>Orange-Themes.com</b>
+					</div>
+					<!-- END .main-footer -->
+				</div>
+				<!-- END .main-content -->
+			</div>
+			<!-- END .main-content-wrapper -->
+		</div>
+		<!-- END body -->
 		<div id="container">
 			<div id="user_nav">
+				<p>
+					<%= link_to "View List of Users", users_path %>
+				</p>
 				<% if user_signed_in? %>
 				Signed in as <%= current_user.email %>. Not you?
 				<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

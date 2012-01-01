@@ -1,16 +1,21 @@
-<%= form_for @advertisement do |f| %>
-  <%= f.error_messages %>
+<%= form_for @advertisement, :html => {:multipart => true } do |f| %>
+<%= f.error_messages %>
+
+<p>
+	<%= f.label :permalink %>
+	<br />
+	<%= f.text_field :permalink %>
+</p>
+<p>
+	<%= f.label :page_id %>
+	<br />
+	<%= f.text_field :page_id %>
+</p>
   <p>
     <%= f.label :image %><br />
-    <%= f.text_field :image %>
+    <%= f.file_field :image %>
   </p>
-  <p>
-    <%= f.label :permalink %><br />
-    <%= f.text_field :permalink %>
-  </p>
-  <p>
-    <%= f.label :page_id %><br />
-    <%= f.text_field :page_id %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+<p>
+	<%= f.submit %>
+</p>
+<% end %> 

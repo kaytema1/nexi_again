@@ -1,7 +1,7 @@
 class CreateAdvertisements < ActiveRecord::Migration
   def self.up
     create_table :advertisements do |t|
-      t.string :image
+
       t.string :permalink
       t.integer :page_id
       t.timestamps

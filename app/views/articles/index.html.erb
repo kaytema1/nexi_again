@@ -1,29 +1,42 @@
+<%= form_tag articles_path, :method => :get do %>
+<p>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+
+
+
+
+
 <% title "Articles" %>
-
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Body</th>
-    <th>Category</th>
-    <th>Region</th>
-    <th>Status</th>
-    <th>Page</th>
-  </tr>
-  <% for article in @articles %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.author %></td>
-      <td><%= article.body %></td>
-      <td><%= article.category %></td>
-      <td><%= article.region %></td>
-      <td><%= article.status %></td>
-      <td><%= article.page_id %></td>
-      <td><%= link_to "Show", article %></td>
-      <td><%= link_to "Edit", edit_article_path(article) %></td>
-      <td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
+	<tr>
+		<th>Image</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Body</th>
+		<th>Category</th>
+		<th>Region</th>
+		<th>Status</th>
+		<th>Page</th>
+	</tr>
+	<% for article in @articles %>
+	<tr>
+		<td> <%= image_tag article.image.url ,:size => "100x100" %></td>
+		<td><%= article.title %></td>
+		<td><%= article.author %></td>
+		<td><%= article.body %></td>
+		<td><%= article.category %></td>
+		<td><%= article.region %></td>
+		<td><%= article.status %></td>
+		<td><%= article.page_id %></td>
+		<td><%= link_to "Show", article %></td>
+		<td><%= link_to "Edit", edit_article_path(article) %></td>
+		<td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
-
-<p><%= link_to "New Article", new_article_path %></p>
+<p>
+	<%= link_to "New Article", new_article_path %>
+</p>

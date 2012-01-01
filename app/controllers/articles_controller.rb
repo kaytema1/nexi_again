@@ -1,12 +1,13 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   def index
+
     @articles = Article.all
   end
 
   def show
     @article = Article.find(params[:id])
-      @comments = @article.comments.paginate :page => params[:page], :per_page => 10, :order => 'created_at ASC' 
+    @comments = @article.comments.paginate :page => params[:page], :per_page => 10, :order => 'created_at ASC'
   end
 
   def new

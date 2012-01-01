@@ -10,7 +10,13 @@ gem 'nifty-generators'
 gem 'will_paginate'
 gem 'devise', '1.5.3'
 gem 'cancan'
+gem 'friendly_id', '3.2.1'
+#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'cocaine'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
 
 # Use unicorn as the web server
 # gem 'unicorn'

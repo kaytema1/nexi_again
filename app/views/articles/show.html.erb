@@ -1,4 +1,5 @@
-<% title "Article" %>
+<% title "Article" %> 
+<%= image_tag @article.image.url ,:size => "250x250" %>
 <p>
 	<strong>Title:</strong>
 	<%= @article.title %>
@@ -28,13 +29,11 @@
 	<%= @article.page_id %>
 </p>
 <p>
-  <% if can? :update, @article %>
-    <%= link_to "Edit", edit_article_path(@article) %> |
-  <% end %>
-  <% if can? :destroy, @article %>
-    <%= link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?" %> |
-  <% end %>
-  <%= link_to "Back to Articles", articles_path %>
+	<%= link_to "Edit", edit_article_path(@article) %> |
+
+	<%= link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?" %> |
+
+	<%= link_to "Back to Articles", articles_path %>
 </p>
 <% if @comments %> <h3>Comments</h3>
 <% for comment in @comments do %>
@@ -42,22 +41,19 @@
 	<strong><%= h(comment.author) %></strong>: <%= h comment.text %>
 	<% end %>
 	<%= will_paginate @comments %>
-	<% end %> 
-	
-	<h3>Post Your Comment</h3>
+	<% end %> <h3>Post Your Comment</h3>
 	<% form_for([@article, Comment.new]) do |form| %>
 <p>
 	<%= form.label :author %>
 </p>
 <% if current_user %>
 <p>
-	<%= form.text_field :author, :value => current_user.email %>
+	<%= form.text_field :author, :value => current_user.username %>
 </p>
 <% else %>
 
-	<%= form.text_field :author%>
+<%= form.text_field :author%>
 <% end %>
-
 <p>
 	<%= form.label :text, 'Comment' %>
 </p>

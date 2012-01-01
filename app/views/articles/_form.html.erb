@@ -1,32 +1,45 @@
-<%= form_for @article do |f| %>
-  <%= f.error_messages %>
+<%= form_for @article , :html => {:multipart => true } do |f| %>
+<%= f.error_messages %>
+
+<p>
+	<%= f.label :title %>
+	<br />
+	<%= f.text_field :title %>
+</p>
+<p>
+	<%= f.label :author %>
+	<br />
+	<%= f.text_field :author %>
+</p>
+<p>
+	<%= f.label :body %>
+	<br />
+	<%= f.text_area :body %>
+</p>
+<p>
+	<%= f.label :category %>
+	<br />
+	<%= f.text_field :category %>
+</p>
+<p>
+	<%= f.label :region %>
+	<br />
+	<%= f.text_field :region %>
+</p>
+<p>
+	<%= f.label :status %>
+	<br />
+	<%= f.text_field :status %>
+</p>
+<p>	
+	<%= f.label :page_id %> <br />
+	<%= collection_select(:article, :page_id, Page.all, :id, :title, :prompt => 'Please select page') %>	
+</p>
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
   </p>
-  <p>
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </p>
-  <p>
-    <%= f.label :region %><br />
-    <%= f.text_field :region %>
-  </p>
-  <p>
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </p>
-  <p>
-    <%= f.label :page_id %><br />
-    <%= f.text_field :page_id %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+<p>
+	<%= f.submit %>
+</p>
+<% end %> 

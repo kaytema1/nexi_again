@@ -1,17 +1,23 @@
 Nexiweb::Application.routes.draw do
-  
+
+  resources :jobs
+
   resources :roles
-  
+
   #resources :users, :only => [:show, :index]
-  
+
   devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin" }
 
+  resources :users, :only => [:index, :show] #do
+  # resources :subdomains, :shallow => true
+  #end
+  #match '/' => 'sites#show', :constraints => { :subdomain => /.+/ }
   resources :advertisements
 
   resources :articles do
     resources :comments, :only => :create
   end
-  
+
   resources :pages
 
   root :to => "pages#index"

@@ -1,0 +1,29 @@
+<% title "Job" %>
+<%= image_tag @job.image.url ,:size => "250x250" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @job.title %>
+</p>
+<p>
+  <strong>Company:</strong>
+  <%= @job.company %>
+</p>
+<p>
+  <strong>Application Due:</strong>
+  <%= @job.application_due %>
+</p>
+<p>
+  <strong>Job Description:</strong>
+  <%= @job.job_description %>
+</p>
+<p>
+  <strong>Permalink:</strong>
+  <%= @job.permalink %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_job_path(@job) %> |
+  <%= link_to "Destroy", @job, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", jobs_path %>
+</p>

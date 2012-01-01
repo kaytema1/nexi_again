@@ -2,13 +2,13 @@
 
 <table>
   <tr>
-    <th>Image</th>
+   <th>Image </th>
     <th>Permalink</th>
     <th>Page</th>
   </tr>
   <% for advertisement in @advertisements %>
     <tr>
-      <td><%= advertisement.image %></td>
+		<td>	<%= image_tag advertisement.image.url ,:size => "100x100" %></td>
       <td><%= advertisement.permalink %></td>
       <td><%= advertisement.page_id %></td>
       <td><%= link_to "Show", advertisement %></td>

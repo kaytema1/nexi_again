@@ -1,13 +1,8 @@
-<% title "Users" %>
+<h1>Users</h1>
 <table>
+	<% @users.each do |user| %>
 	<tr>
-		<th>Name</th>
-	</tr>
-	<% for user in @users %>
-	<tr>
-		<td><%= user.username %></td>
-<td><%= link_to "Show", user %></td>
+		<td><%= link_to user.username, user %></td>
 	</tr>
 	<% end %>
-	
 </table>

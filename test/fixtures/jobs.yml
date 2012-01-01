@@ -1,0 +1,13 @@
+one:
+  title: MyString
+  company: MyString
+  application_due: MyString
+  job_description: MyText
+  permalink: MyString
+
+two:
+  title: MyString
+  company: MyString
+  application_due: MyString
+  job_description: MyText
+  permalink: MyString

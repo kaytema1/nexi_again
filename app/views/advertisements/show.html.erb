@@ -1,9 +1,6 @@
 <% title "Advertisement" %>
 
-<p>
-  <strong>Image:</strong>
-  <%= @advertisement.image %>
-</p>
+<%= image_tag @advertisement.image.url ,:size => "250x250" %>
 <p>
   <strong>Permalink:</strong>
   <%= @advertisement.permalink %>
