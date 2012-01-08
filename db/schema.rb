@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229140602) do
+ActiveRecord::Schema.define(:version => 20120108071136) do
 
   create_table "advertisements", :force => true do |t|
     t.string   "permalink"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20111229140602) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "published",          :default => false
   end
 
   create_table "comments", :force => true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20111229140602) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "location"
   end
 
   create_table "pages", :force => true do |t|

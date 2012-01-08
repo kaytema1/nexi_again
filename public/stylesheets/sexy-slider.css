@@ -10,6 +10,7 @@
 	.sexyslider-title a { max-width: 600px; font-size: 20px; line-height: 26px; color: #fff; font-weight: normal; text-decoration: none; display: block; }
 	.sexyslider-title a:hover { color: #00c3f0; text-decoration: none; }
 	.sexyslider-title p { max-width: 650px; color: #b2b2b2; }
+	.sexyslider-title {font-size: larger; color: white; }
 	
 .sexyslider-blog-title { width: 569px !important; height: auto !important; margin: 0; padding: 13px 0 13px 0px; z-index: 30 !important; position: absolute; }
 	.sexyslider-blog-title a { width: 537px !important; height: auto !important; color: #fff; bottom: 0; font-size: 16px; line-height: 21px; padding: 11px 16px; background: url(../images/blog-slider-title-bg.png) 0 0 repeat; z-index: 30 !important; position: absolute; text-decoration: none; }

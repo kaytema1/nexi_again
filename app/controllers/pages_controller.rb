@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
+    @page_articles = @page.articles.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
   end
 
   def new

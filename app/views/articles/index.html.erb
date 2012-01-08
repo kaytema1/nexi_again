@@ -1,42 +1,158 @@
-<%= form_tag articles_path, :method => :get do %>
-<p>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search", :name => nil %>
-</p>
-<% end %>
+<div class="main-column-wrapper">
+	<!-- BEGIN .full-width -->
+	<div class="full-width">
+		<div class="post-title">
+			<b>Archive</b>
+		</div>
+		<!-- BEGIN .archive -->
+		<div class="archive">
+			<!-- BEGIN .row -->
+			<div class="row">
+				<div class="category">
+					<div class="sidebar-title">
+						<b>Technology</b>
+					</div>
+					<ul>
+						<% for article in @articles %>
+						<li>
+							<%= link_to article.title , article_path(article) %>
+						</li>
+						
+						<% end %>
+					</ul>
+					<p>
+						<a href="#" class="more-link"><span>More about technology</span></a>
+					</p>
+				</div>
+				<div class="category">
+					<div class="sidebar-title">
+						<b>Movies</b>
+					</div>
+					<ul>
+						<% for article in @articles %>
+						<li>
+							<%= link_to article.title , article_path(article) %>
+						</li>
+						
+						<% end %>
+					</ul>
+					<p>
+						<a href="#" class="more-link"><span>More about movies</span></a>
+					</p>
+				</div>
+				<div class="category">
+					<div class="sidebar-title">
+						<b>Games &amp; entertainment</b>
+					</div>
+					<ul>
+						<% for article in @articles %>
+						<li>
+							<%= link_to article.title , article_path(article) %>
+						</li>
+						
+						<% end %>
+					</ul>
+					<p>
+						<a href="#" class="more-link"><span>More about games &amp; entertainment</span></a>
+					</p>
+				</div>
+				<!-- END .row -->
+			</div>
+			<!-- BEGIN .row -->
+			<div class="row">
+				<div class="category">
+					<div class="sidebar-title">
+						<b>Music</b>
+					</div>
+					<ul>
+						<li>
+							<a href="#">Aenean iaculis, risus eget sollicitudin pretiumligula</a>
+						</li>
+						<li>
+							<a href="#">Vestibulum ante ipsum primis in faucibus</a>
+						</li>
+						<li>
+							<a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit placerat vel at velit</a>
+						</li>
+						<li>
+							<a href="#">Phasellus eleifend, est sit amet tincidunt blandit, mauris tellus tempus sem</a>
+						</li>
+						<li>
+							<a href="#">Vestibulum ante ipsum primis in faucibus</a>
+						</li>
+						<li>
+							<a href="#">Tivamus sollicitudin, neque rutrum</a>
+						</li>
+					</ul>
+					<p>
+						<a href="#" class="more-link"><span>More about music</span></a>
+					</p>
+				</div>
+				<div class="category">
+					<div class="sidebar-title">
+						<b>Fashion &amp; design</b>
+					</div>
+					<ul>
+						<li>
+							<a href="#">Aenean iaculis, risus eget sollicitudin pretiumligula</a>
+						</li>
+						<li>
+							<a href="#">Vestibulum ante ipsum primis in faucibus</a>
+						</li>
+						<li>
+							<a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit placerat vel at velit</a>
+						</li>
+						<li>
+							<a href="#">Phasellus eleifend, est sit amet tincidunt blandit, mauris tellus tempus sem</a>
+						</li>
+						<li>
+							<a href="#">Vestibulum ante ipsum primis in faucibus</a>
+						</li>
+						<li>
+							<a href="#">Tivamus sollicitudin, neque rutrum</a>
+						</li>
+					</ul>
+					<p>
+						<a href="#" class="more-link"><span>More about fashion &amp; design</span></a>
+					</p>
+				</div>
+				<div class="category">
+					<div class="sidebar-title">
+						<b>Automotive</b>
+					</div>
+					<ul>
+						<li>
+							<a href="#">Aenean iaculis, risus eget sollicitudin pretiumligula</a>
+						</li>
+						<li>
+							<a href="#">Vestibulum ante ipsum primis in faucibus</a>
+						</li>
+						<li>
+							<a href="#">Maecenas vitae tortor ac sem luctus tinciduntvit placerat vel at velit</a>
+						</li>
+						<li>
+							<a href="#">Phasellus eleifend, est sit amet tincidunt blandit, mauris tellus tempus sem</a>
+						</li>
+						<li>
+							<a href="#">Vestibulum ante ipsum primis in faucibus</a>
+						</li>
+						<li>
+							<a href="#">Tivamus sollicitudin, neque rutrum</a>
+						</li>
+					</ul>
+					<p>
+						<a href="#" class="more-link"><span>More about automotive</span></a>
+					</p>
+				</div>
+				<!-- END .row -->
+			</div>
+			<!-- END .archive -->
+		</div>
+		<!-- END .full-width -->
+	</div>
+	<div class="clear">
+		&nbsp;
+	</div>
+	<!-- END .main-column-wrapper -->
+</div>
 
-
-
-
-
-<% title "Articles" %>
-<table>
-	<tr>
-		<th>Image</th>
-		<th>Title</th>
-		<th>Author</th>
-		<th>Body</th>
-		<th>Category</th>
-		<th>Region</th>
-		<th>Status</th>
-		<th>Page</th>
-	</tr>
-	<% for article in @articles %>
-	<tr>
-		<td> <%= image_tag article.image.url ,:size => "100x100" %></td>
-		<td><%= article.title %></td>
-		<td><%= article.author %></td>
-		<td><%= article.body %></td>
-		<td><%= article.category %></td>
-		<td><%= article.region %></td>
-		<td><%= article.status %></td>
-		<td><%= article.page_id %></td>
-		<td><%= link_to "Show", article %></td>
-		<td><%= link_to "Edit", edit_article_path(article) %></td>
-		<td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
-	</tr>
-	<% end %>
-</table>
-<p>
-	<%= link_to "New Article", new_article_path %>
-</p>

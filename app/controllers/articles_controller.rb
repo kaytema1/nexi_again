@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comments = @article.comments.paginate :page => params[:page], :per_page => 10, :order => 'created_at ASC'
+    @page_articles = Article.where(:page_id => params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    @side_page_articles =  Article.where(:page_id => params[:id]).order('RANDOM()').paginate(:page => params[:page], :per_page => 5)
   end
 
   def new

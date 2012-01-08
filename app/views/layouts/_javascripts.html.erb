@@ -1,0 +1,85 @@
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag "jquery.placeholder.min.js" %>
+<%= javascript_include_tag "cufon-yui.js" %>
+<%= javascript_include_tag "cufon-replace.js" %>
+<%= javascript_include_tag "cachet.font.js" %>
+<%= javascript_include_tag "jquery.sexyslider.js" %>
+<%= javascript_include_tag "text-scroller.js" %>
+<%= javascript_include_tag "scripts.js" %>
+
+
+<%= csrf_meta_tag %>
+<%= yield(:head) %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// hide #back-top first
+		// $("#back-top").hide();
+		// fade in #back-top
+		$(function() {
+			$(window).scroll(function() {
+			});
+			// scroll body to 0px on click
+			$('.back-to-top a').click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 800);
+				return false;
+			});
+		});
+	});
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#homepage-slider").SexySlider({
+			width : 871,
+			height : 350,
+			delay : 3000,
+			strips : 20,
+			autopause : true,
+			navigation : '#navigation',
+			control : '#control',
+			effect : 'fade',
+			titleStyle : 'false'
+		});
+	});
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		// hide #back-top first
+		// $("#back-top").hide();
+		// fade in #back-top
+		$(function() {
+			$(window).scroll(function() {
+			});
+			// scroll body to 0px on click
+			$('.back-to-top a').click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 800);
+				return false;
+			});
+		});
+	});
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#blog-slider").SexySlider({
+			//width      : 569,
+			//height     : 350,
+			//delay      : 3000,
+			//strips     : 20,
+			autopause : true,
+			effect : 'fade',
+			onTitleHide : function() {
+				Cufon.replace('.sexyslider-title a', {
+					textShadow : '#3e0000 0 1px',
+					hover : 'true'
+				});
+			}
+		});
+	});
+
+</script>

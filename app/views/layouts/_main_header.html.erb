@@ -1,0 +1,41 @@
+<div class="main-header">
+	<!-- <div class="logo">
+	<a href="homepage-3.html"><img src="images/logo-kernel-1.png" alt="KERNEL" width="166" height="28" /></a>
+	</div> -->
+	<div class="text-logo">
+		<%= link_to "NexInnova", root_path %>
+	</div>
+	<div class="search">
+		<div id="user_nav">
+			<% if user_signed_in? %>
+			Signed in as <%= current_user.email %>. This cannot be cheese?
+			<%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
+			<% else %>
+			<%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+			<% end %>
+		</div>
+		<form action="">
+			<input type="text" class="input-text" placeholder="search here" />
+			<input type="submit" class="input-submit" value="" />
+		</form>
+	</div>
+	<!-- END .main-header -->
+</div>
+<!-- BEGIN .main-menu-wrapper -->
+<div class="main-menu-wrapper">
+	<span class="corner-left">&nbsp;</span>
+	<ul>
+		<% for page in @pages %>
+		<li>
+			<%= link_to page.title , page_path(page) %>
+		</li>
+		<% end %>
+		<li>
+			<%= link_to "Archive", articles_path %>
+		</li>
+		<li>
+			<%= link_to "Jobs", jobs_path %>
+		</li>
+	</ul>
+	<!-- END .main-menu-wrapper -->
+</div>

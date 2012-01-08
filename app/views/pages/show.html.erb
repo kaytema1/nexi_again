@@ -1,16 +1,41 @@
-<% title "Page" %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @page.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @page.description %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_page_path(@page) %> |
-  <%= link_to "Destroy", @page, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", pages_path %>
-</p>
+<div class="main-column-wrapper">
+	<!-- BEGIN .main-column-left -->
+	<div class="main-column-left">
+		<!-- BEGIN .blog-style-1 -->
+		<div class="blog-style-1">
+			<!-- BEGIN .item -->
+			<% for article in @page_articles %>
+			<div class="item">
+				<h2><%= link_to article.title, article_path(article) %></h2>
+				<div class="info">
+					<span class="date"><%= article.created_at.to_s(:short) %></span>
+					<a href="#" class="author">by <%= link_to  article.author , article_path(article) %></a>
+					<a href="#" class="section"><%= link_to  article.category  , article_path(article) %></a>
+					<a href="#" class="comments"><%= article.comments.count %> comments</a>
+				</div>
+				<%= link_to image_tag(article.image.url,:size => "210x150", :class => "image") , article_path(article)  %>
+				<p style="text-align: justify">
+					<%= article.body[0..400] %>
+				</p>
+				<p class="last">
+					<a href="#" class="more-link"><span>Read more</span></a>
+				</p>
+				<!-- END .item -->
+			</div>
+			<% end %> <!-- BEGIN .item -->
+			<div class="pages">
+				<div class=" digg_pagination">
+					<%= will_paginate @page_articles %>
+				</div>
+			</div>
+			<!-- END .blog-style-1 -->
+		</div>
+		<!-- END .main-column-left -->
+	</div>
+	<!-- BEGIN .sidebar -->
+	<%= render "layouts/sidebar" %>
+	<div class="clear">
+		&nbsp;
+	</div>
+	<!-- END .main-column-wrapper -->
+</div>

@@ -1,64 +1,76 @@
-<% title "Article" %> 
-<%= image_tag @article.image.url ,:size => "250x250" %>
-<p>
-	<strong>Title:</strong>
-	<%= @article.title %>
-</p>
-<p>
-	<strong>Author:</strong>
-	<%= @article.author %>
-</p>
-<p>
-	<strong>Body:</strong>
-	<%= @article.body %>
-</p>
-<p>
-	<strong>Category:</strong>
-	<%= @article.category %>
-</p>
-<p>
-	<strong>Region:</strong>
-	<%= @article.region %>
-</p>
-<p>
-	<strong>Status:</strong>
-	<%= @article.status %>
-</p>
-<p>
-	<strong>Page:</strong>
-	<%= @article.page_id %>
-</p>
-<p>
-	<%= link_to "Edit", edit_article_path(@article) %> |
-
-	<%= link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?" %> |
-
-	<%= link_to "Back to Articles", articles_path %>
-</p>
-<% if @comments %> <h3>Comments</h3>
-<% for comment in @comments do %>
-<p>
-	<strong><%= h(comment.author) %></strong>: <%= h comment.text %>
-	<% end %>
-	<%= will_paginate @comments %>
-	<% end %> <h3>Post Your Comment</h3>
-	<% form_for([@article, Comment.new]) do |form| %>
-<p>
-	<%= form.label :author %>
-</p>
-<% if current_user %>
-<p>
-	<%= form.text_field :author, :value => current_user.username %>
-</p>
-<% else %>
-
-<%= form.text_field :author%>
-<% end %>
-<p>
-	<%= form.label :text, 'Comment' %>
-</p>
-<p>
-	<%= form.text_area :text %>
-</p>
-<%= form.submit 'Save' %>
-<% end %>
+<div class="main-column-wrapper">
+	<!-- BEGIN .main-column-left -->
+	<div class="main-column-left">
+		<!-- BEGIN .post -->
+		<div class="post post-style-1">
+			<h2 class="article-title"><%= link_to @article.title %></h2>
+			<div class="info">
+				<span class="date"><%= @article.created_at %></span>
+				<span class="author">by <%= @article.author %></span>
+				<span class="section"><%= @article.category %></span>
+				<a href="#" class="comments"><%= @article.comments.count %> comments</a>
+			</div>
+			<%= link_to image_tag(@article.image.url, :size => "170x170", :class => "image" ), article_path(@article) %>
+			<p class="caps" style="text-align: justify">
+				<%= @article.body %>
+			</p>
+			<!-- END .post -->
+		</div>
+		<% if @comments %> <!-- BEGIN .comments -->
+		<div class="comments span9" >
+			<div class="post-title">
+				<b>Comments</b>
+			</div>
+			<ol>
+				<% for comment in @comments do %>
+				<li>
+					<!-- BEGIN .comments-item -->
+					<div class="comments-item">
+						<div class="comments-header">
+							<div class="user">
+								<span><%= h(comment.author) %></span><a href="#"> <%= image_tag("ico-user-3.png ")%> </a>
+							</div>
+							<h2 class="time"><%= comment.created_at.to_s(:long) %></h2>
+						</div>
+						<p>
+							<%= h comment.text %>
+						</p>
+						<!-- END .comments-item -->
+					</div>
+				</li>
+				<% end %>
+			</ol>
+			<% end %> <!-- BEGIN .add-comment -->
+			<div class="add-comment">
+				<h3>Post Your Comment</h3>
+				<% form_for([@article, Comment.new]) do |form| %>
+				<table>
+					<tr>
+						<td>User name</td>
+						<td><%= form.text_field :author, :class => "input-text-1" %></td>
+					</tr>
+					<tr>
+						<td class="spacer-1" colspan="2"></td>
+					</tr>
+					<tr>
+						<td><%= form.label :text, 'Your Comment' %> </td>
+						<td><%= form.text_area :text, :class=>"text-area-1" %> </td>
+					</tr>
+					<tr>
+						<td></td>
+						<td> <%= form.submit 'Save' ,:class=> "btn primary large" %></td>
+					</tr>
+				</table>
+				<% end %> <!-- END .add-comment -->
+			</div>
+			<!-- END .comments -->
+		</div>
+		<!-- END .main-column-left -->
+	</div>
+	<!-- BEGIN .sidebar -->
+	<%= render "layouts/article_sidebar" %>
+	<div class="clear">
+		&nbsp;
+	</div>
+	<!-- END .main-column-wrapper -->
+</div>

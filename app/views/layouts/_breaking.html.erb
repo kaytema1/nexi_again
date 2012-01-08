@@ -1,0 +1,15 @@
+<div class="breaking-wrapper">
+	<p>
+		Breaking:
+	</p>
+	<div class="horizontal-scroller">
+		<div id="scrollingtext">
+			<% for article in @f_p_articles %>
+
+			<%= image_tag("ico-list-bullet-1.png", :size => "7x6", :alt => "" )%> <%= link_to article.title, article_path(article) %>
+
+			<% end %>
+		</div>
+	</div>
+	<!-- END .breaking-wrapper -->
+</div>

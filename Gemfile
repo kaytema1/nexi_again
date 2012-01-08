@@ -5,19 +5,19 @@ gem 'rails', '3.0.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
 gem 'nifty-generators'
 gem 'will_paginate'
 gem 'devise', '1.5.3'
 gem 'cancan'
 gem 'friendly_id', '3.2.1'
+gem 'jquery-rails'
 #gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'cocaine'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-gem 'progress_bar'
+#gem 'sunspot_rails'
+#gem 'sunspot_solr'
+#gem 'progress_bar'
 
 # Use unicorn as the web server
 # gem 'unicorn'

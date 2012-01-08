@@ -1,0 +1,54 @@
+<div class="main-footer">
+	<div class="about">
+		<h2>About NexInnova Advisory Group</h2>
+		<div>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu nisi ante, dapibus adipiscing magna. Cras a leo a magna. Phasellus enim libero, blandit ac tempor
+			</p>
+			<p>
+				Nulla hendrerit nunc sit amet nunc rutrum sed cursus sapien condimentum.
+			</p>
+			<p>
+			
+			</p>
+		</div>
+	</div>
+	<div class="categories">
+		<h2>Categories</h2>
+		<ul>
+			<% for page in @pages %>
+			<li>
+				<%= link_to page.title, page_path(page) %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="social">
+		<h2>Social networks</h2>
+		<ul>
+			<li>
+				<a href="#" class="twitter">Follow us on Twitter</a>
+			</li>
+			<li>
+				<a href="#" class="facebook">Friend un on Facebook</a>
+			</li>
+			<li>
+				<a href="#" class="digg">Dig us at Digg</a>
+			</li>
+			<li>
+				<a href="#" class="youtube">Watch our YouTube channel</a>
+			</li>
+			<li>
+				<a href="#" class="flickr">Check our photos at Flickr</a>
+			</li>
+			<li>
+				<a href="#" class="rss">RSS feeds</a>
+			</li>
+		</ul>
+	</div>
+	<div class="copyright">
+		
+		Copyright 2011 by <b>nexinnovaadvisorygroup.com</b>
+	</div>
+	<!-- END .main-footer -->
+</div>

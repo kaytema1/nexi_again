@@ -1,0 +1,105 @@
+<div class="homepage-block-1">
+	<!-- BEGIN .layout-4 -->
+	<div class="layout-4">
+		<!-- BEGIN .item-wrapper -->
+		<div class="item-wrapper">
+			<div class="layout-4-title">
+				<b>Latest in <%= @pages.first.title %> </b>
+			</div>
+			<div class="featured-item">
+				<%= link_to image_tag(@first_articles.last.image.url, :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5> <%= link_to @articles.last.title, article_path(@articles.last)%></h5>
+				<div class="info">
+					<%= @first_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @articles.last.comments.count, article_path(@articles.last) %> comments</a>
+				</div>
+				<p class="intro">
+					<%= @first_articles.last.body[0...125]%>
+				</p>
+			</div>
+			<%for article in @first_articles %>
+			<div class="item">
+				<div class="image">
+					<%= link_to image_tag(article.image.url, :alt => "", :size => "50x50"),article_path(article) %>
+				</div>
+				<div class="text">
+					<h5><%= link_to article.title, article_path(article)%></h5>
+					<p class="info">
+						<%= article.created_at.to_s(:long) %>
+					</p>
+				</div>
+			</div>
+			<% end %>
+			<p class="show-all">
+				<%= link_to '<span>Show all articles</span>'.html_safe, page_path(@pages.first) ,:class => "btn-1 btn-1-color-default" %>
+			</p>
+			<!-- END .item-wrapper -->
+		</div>
+		<!-- BEGIN .item-wrapper -->
+		<div class="item-wrapper">
+			<div class="layout-4-title">
+				<b>Latest in <%= @pages.second.title %> </b>
+			</div>
+			<div class="featured-item">
+				<%= link_to image_tag(@second_articles.last.image.url, :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5> <%= link_to @second_articles.last.title, article_path(@second_articles.last)%></h5>
+				<div class="info">
+					<%= @second_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @second_articles.last.comments.count, article_path(@second_articles.last) %> comments</a>
+				</div>
+				<p class="intro">
+					<%= @second_articles.last.body[0...125]%>
+				</p>
+			</div>
+			<%for article in @second_articles %>
+			<div class="item">
+				<div class="image">
+					<%= link_to image_tag(article.image.url, :alt => "", :size => "50x50"),article_path(article) %>
+				</div>
+				<div class="text">
+					<h5><%= link_to article.title, article_path(article)%></h5>
+					<p class="info">
+						<%= article.created_at.to_s(:long) %>
+					</p>
+				</div>
+			</div>
+			<% end %>
+			<p class="show-all">
+				<%= link_to '<span>Show all articles</span>'.html_safe, page_path(@pages.second) ,:class => "btn-1 btn-1-color-default" %>
+			</p>
+			<!-- END .item-wrapper -->
+			<!-- END .item-wrapper -->
+		</div>
+		<!-- BEGIN .item-wrapper -->
+		<div class="item-wrapper last">
+			<div class="layout-4-title">
+				<b>Latest in <%= @pages.third.title %> </b>
+			</div>
+			<div class="featured-item">
+				<%= link_to image_tag(@third_articles.last.image.url, :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5> <%= link_to @third_articles.last.title, article_path(@third_articles.last)%></h5>
+				<div class="info">
+					<%= @third_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @third_articles.last.comments.count, article_path(@articles.last) %> comments</a>
+				</div>
+				<p class="intro">
+					<%= @third_articles.last.body[0...125]%>
+				</p>
+			</div>
+			<%for article in @third_articles %>
+			<div class="item">
+				<div class="image">
+					<%= link_to image_tag(article.image.url, :alt => "", :size => "50x50"),article_path(article) %>
+				</div>
+				<div class="text">
+					<h5><%= link_to article.title, article_path(article)%></h5>
+					<p class="info">
+						<%= article.created_at.to_s(:long) %>
+					</p>
+				</div>
+			</div>
+			<% end %>
+			<p class="show-all">
+				<%= link_to '<span>Show all articles</span>'.html_safe, page_path(@pages.third) ,:class => "btn-1 btn-1-color-default" %>
+			</p>
+			<!-- END .item-wrapper -->
+			<!-- END .item-wrapper -->
+		</div>
+		<!-- END .layout-4 -->
+	</div>
+	<!-- END .homepage-block-1 -->
+</div>

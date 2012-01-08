@@ -1,33 +1,34 @@
-<%= form_tag jobs_path, :method => :get do %>
-<p>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search", :name => nil %>
-</p>
-<% end %>
 <% title "Jobs" %>
-<table>
-	<tr>
-		<th>Image</th>
-		<th>Title</th>
-		<th>Company</th>
-		<th>Application Due</th>
-		<th>Job Description</th>
-		<th>Permalink</th>
-	</tr>
-	<% for job in @jobs %>
-	<tr>
-		<td><%= image_tag job.image.url ,:size => "100x100" %> </td>
-		<td><%= job.title %></td>
-		<td><%= job.company %></td>
-		<td><%= job.application_due %></td>
-		<td><%= job.job_description %></td>
-		<td><%= job.permalink %></td>
-		<td><%= link_to "Show", job %></td>
-		<td><%= link_to "Edit", edit_job_path(job) %></td>
-		<td><%= link_to "Destroy", job, :confirm => 'Are you sure?', :method => :delete %></td>
-	</tr>
-	<% end %>
-</table>
-<p>
-	<%= link_to "New Job", new_job_path %>
-</p>
+<div class="main-column-wrapper">
+	<!-- BEGIN .main-column-left -->
+	<div class="main-column-left">
+		<h2>Featured NexInnova Jobs</h2>
+		<table style="width: 100%">
+			<thead>
+				<tr>
+				<th style="text-align: left; width: 50%">JOB TITLE</th>
+				<th style="text-align: left">LOCATION</th>
+				<th style="text-align: left">UPDATED</th>
+				</tr>
+			</thead>
+			<% for job in @jobs %>
+			<tr>
+				<td><%= link_to job.title, job_path(job) %>
+				<br />
+				<%= job.company %> </td>
+				<td><%= job.location %></td>
+				<td><%= job.created_at.strftime("%B %d, %Y") %></td>
+			</tr>
+			<% end %>
+		</table>
+		<p>
+			<%= link_to "New Job", new_job_path %>
+		</p>
+	</div>
+	<!-- BEGIN .sidebar -->
+	<%= render "layouts/jobs_sidebar" %>
+	<div class="clear">
+		&nbsp;
+	</div>
+	<!-- END .main-column-wrapper -->
+</div>

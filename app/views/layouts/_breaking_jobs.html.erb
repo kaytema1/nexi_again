@@ -1,0 +1,15 @@
+<div class="breaking-wrapper">
+	<p>
+		Breaking:
+	</p>
+	<div class="horizontal-scroller">
+		<div id="scrollingtext">
+			<% for job in @jobs %>
+
+			<%= image_tag("ico-list-bullet-1.png", :size => "7x6", :alt => "" )%> <%= link_to job.title, job_path(job) %>
+
+			<% end %>
+		</div>
+	</div>
+	<!-- END .breaking-wrapper -->
+</div>

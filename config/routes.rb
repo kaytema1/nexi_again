@@ -6,9 +6,9 @@ Nexiweb::Application.routes.draw do
 
   #resources :users, :only => [:show, :index]
 
-  devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin" }
+  devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin", :sign_out => "logout" }
 
-  resources :users, :only => [:index, :show] #do
+
   # resources :subdomains, :shallow => true
   #end
   #match '/' => 'sites#show', :constraints => { :subdomain => /.+/ }
