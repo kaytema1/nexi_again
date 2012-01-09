@@ -104,4 +104,4 @@ DEPENDENCIES
   nifty-generators
   rails (= 3.0.11)
   sqlite3
-  will_paginate
+  will_paginate (~> 3.0.pre4)

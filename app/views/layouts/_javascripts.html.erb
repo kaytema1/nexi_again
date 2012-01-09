@@ -6,7 +6,7 @@
 <%= javascript_include_tag "jquery.sexyslider.js" %>
 <%= javascript_include_tag "text-scroller.js" %>
 <%= javascript_include_tag "scripts.js" %>
-
+<%= javascript_include_tiny_mce_if_used %> <%= tiny_mce if using_tiny_mce? %>
 
 <%= csrf_meta_tag %>
 <%= yield(:head) %>

@@ -7,7 +7,7 @@ gem 'rails', '3.0.11'
 
 gem 'sqlite3'
 gem 'nifty-generators'
-gem 'will_paginate'
+gem "will_paginate", "~> 3.0.pre4"
 gem 'devise', '1.5.3'
 gem 'cancan'
 gem 'friendly_id', '3.2.1'
