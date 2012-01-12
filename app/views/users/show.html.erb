@@ -1,6 +1,26 @@
-<h1><%= @user.username %></h1>
-<p>
-	Email: <%= @user.email %>
-</p>
-<%= link_to 'Edit', edit_user_registration_path %> |
-<%= link_to 'List of Users', users_path %> 
+<ul class="tabs">
+	<li class="active">
+		<a href="#">Home</a>
+	</li>
+	<li>
+		<a href="#">Profile</a>
+	</li>
+	<li>
+		<a href="#">Messages</a>
+	</li>
+	<li>
+		<a href="#">Settings</a>
+	</li>
+	<li>
+		<a href="#">Contact</a>
+	</li>
+	</ul
+
+	<h1><%= @user.username %></h1>
+	<p>
+		Email: <%= @user.email %>
+	</p>
+	<%= link_to 'Edit', edit_user_registration_path %> |
+	<% if current_user.admin? %>
+	<%= link_to 'List of Users', users_path %> | <%= link_to "Create New Article" , new_article_path %>
+	<% end %>

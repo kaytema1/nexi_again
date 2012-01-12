@@ -7,12 +7,12 @@
 				<b>Latest in <%= @pages.first.title %> </b>
 			</div>
 			<div class="featured-item">
-				<%= link_to image_tag(@first_articles.last.image.url, :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5> <%= link_to @articles.last.title, article_path(@articles.last)%></h5>
+				<%= link_to image_tag(@first_articles.last.image.url, :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5> <%= link_to @first_articles.last.title, article_path(@first_articles.last)%></h5>
 				<div class="info">
-					<%= @first_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @articles.last.comments.count, article_path(@articles.last) %> comments</a>
+					<%= @first_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @first_articles.last.comments.count, article_path(@first_articles.last) %> comments</a>
 				</div>
 				<p class="intro">
-					<%= @first_articles.last.body[0...125]%>
+					<%= @first_articles.last.body.html_safe[0...125]%>
 				</p>
 			</div>
 			<%for article in @first_articles %>
@@ -44,7 +44,7 @@
 					<%= @second_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @second_articles.last.comments.count, article_path(@second_articles.last) %> comments</a>
 				</div>
 				<p class="intro">
-					<%= @second_articles.last.body[0...125]%>
+					<%= @second_articles.last.body.html_safe[0...125]%>
 				</p>
 			</div>
 			<%for article in @second_articles %>
@@ -74,10 +74,10 @@
 			<div class="featured-item">
 				<%= link_to image_tag(@third_articles.last.image.url, :alt => "", :size => "254x141"),"#", :class => "featured-image" %> <h5> <%= link_to @third_articles.last.title, article_path(@third_articles.last)%></h5>
 				<div class="info">
-					<%= @third_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @third_articles.last.comments.count, article_path(@articles.last) %> comments</a>
+					<%= @third_articles.last.created_at.to_s(:long)  %> &nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="#"> <%= link_to @third_articles.last.comments.count, article_path(@third_articles.last) %> comments</a>
 				</div>
 				<p class="intro">
-					<%= @third_articles.last.body[0...125]%>
+					<%= @third_articles.last.body.html_safe[0...125]%>
 				</p>
 			</div>
 			<%for article in @third_articles %>

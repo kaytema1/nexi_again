@@ -1,9 +1,16 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
-  def index
+  in_place_edit_for :article, :title
 
+  protect_from_forgery :except => [:set_article_title]
+  def index
     @articles = Article.all
+  end
+
+  def manage
+    @articles = Article.all
+
   end
 
   def show
@@ -27,7 +34,14 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @page_articles = Article.where(:page_id => params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    @side_page_articles =  Article.where(:page_id => params[:id]).order('RANDOM()').paginate(:page => params[:page], :per_page => 5)
+
     @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html { render :action => "show" }
+      format.xml  { render :xml => @article }
+    end
   end
 
   def update
@@ -43,5 +57,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_url, :notice => "Successfully destroyed article."
+  end
+
+  def edit_individual
+    @articles = Article.find(params[:article_ids])
+  end
+
+  def update_individual
+    Article.update(params[:articles].keys, params[:articles].values)
+    flash[:notice] = "Articles updated"
+    redirect_to :action => 'manage'
   end
 end

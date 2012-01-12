@@ -1,26 +1,35 @@
 Nexiweb::Application.routes.draw do
 
-  resources :jobs
-
-  resources :roles
-
-  #resources :users, :only => [:show, :index]
-
-  devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin", :sign_out => "logout" }
-
+#devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin", :sign_out => "logout" }
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+    get "/users/sign_up" => "devise/registrations#new", :as => :new_user_registration
+    get "/users/sign_in" => "devise/sessions#new", :as => :new_user_session
+  end
 
   # resources :subdomains, :shallow => true
   #end
   #match '/' => 'sites#show', :constraints => { :subdomain => /.+/ }
   resources :advertisements
 
+  #resources :articles, :collection => { :edit_individual => :post, :update_individual => :put }
   resources :articles do
+    collection do
+      get :manage
+      post :edit_individual
+      post :update_individual
+    end
+
     resources :comments, :only => :create
   end
 
   resources :pages
 
   root :to => "pages#index"
+  resources :users
+  resources :jobs
+
+  resources :roles
 
 # The priority is based upon order of creation:
 # first created -> highest priority.

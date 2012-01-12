@@ -1,9 +1,9 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in Devise::Mailer,
-  # note that it will be overwritten if you use your own mailer class with default "from" parameter.
+# ==> Mailer Configuration
+# Configure the e-mail address which will be shown in Devise::Mailer,
+# note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
@@ -42,7 +42,7 @@ Devise.setup do |config|
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
   config.strip_whitespace_keys = [ :email ]
-
+  config.sign_out_via = :delete
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
 
@@ -194,17 +194,17 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
-  # ==> OmniAuth
-  # Add a new OmniAuth provider. Check the wiki for more information on setting
-  # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+# ==> OmniAuth
+# Add a new OmniAuth provider. Check the wiki for more information on setting
+# up on your models and hooks.
+# config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
-  # ==> Warden configuration
-  # If you want to use other strategies, that are not supported by Devise, or
-  # change the failure app, you can configure them inside the config.warden block.
-  #
-  # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
-  # end
+# ==> Warden configuration
+# If you want to use other strategies, that are not supported by Devise, or
+# change the failure app, you can configure them inside the config.warden block.
+#
+# config.warden do |manager|
+#   manager.intercept_401 = false
+#   manager.default_strategies(:scope => :user).unshift :some_external_strategy
+# end
 end

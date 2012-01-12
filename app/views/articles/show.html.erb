@@ -10,10 +10,14 @@
 				<span class="section"><%= @article.category %></span>
 				<a href="#" class="comments"><%= @article.comments.count %> comments</a>
 			</div>
-			<%= link_to image_tag(@article.image.url, :size => "170x170", :class => "image" ), article_path(@article) %>
-			<p class="caps" style="text-align: justify">
-				<%= @article.body.html_safe %>
-			</p>
+			<div>
+				<div class="pull-left">
+					<%= link_to image_tag(@article.image.url, :size => "567x250", :class => "image",:style => "margin-bottom: 50px; " ), article_path(@article) %>
+					<p class="pull-left" style="text-align: justify">
+						<%= @article.body.html_safe %>
+					</p>
+				</div>
+			</div>
 			<!-- END .post -->
 		</div>
 		<% if @comments %> <!-- BEGIN .comments -->

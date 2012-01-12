@@ -1,0 +1,12 @@
+<% title "Edit Articles" %>
+
+<% form_tag update_individual_articles_path :html => {:multipart => true } do %>
+<% for article in @articles %>
+<%= fields_for "articles[]", article do |f| %> <h2><%= h article.title %></h2>
+<%= render "fields" , :f => f  %>
+<% end %>
+<% end %>
+<p>
+	<%= submit_tag "Submit" %>
+</p>
+<% end %> 

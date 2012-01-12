@@ -14,7 +14,7 @@
   </p>
   <p>
     <%= f.label :job_description %><br />
-    <%= f.text_area :job_description %>
+    <%= f.text_area :job_description,  :class => :mceEditor %>
   </p>
   <p>
     <%= f.label :permalink %><br />
@@ -28,5 +28,5 @@
     <%= f.label :image %><br />
     <%= f.file_field :image %>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit :class => "btn large info "%></p>
 <% end %>

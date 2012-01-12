@@ -3,7 +3,7 @@
 	<div class="homepage-slider">
 		<div id="homepage-slider">
 			<% for f_p_article in @f_p_articles %>
-			<%= link_to image_tag(f_p_article.image.url, :alt => f_p_article.title, :size => "871x350"),"#", :class => "featured-image" %> 
+			<%= link_to image_tag(f_p_article.image.url(:banner), :alt => f_p_article.title),"#", :class => "featured-image" %> 
 			<% end %>
 		</div>
 		<div id="navigation"></div>

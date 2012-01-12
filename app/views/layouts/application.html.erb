@@ -3,8 +3,9 @@
 	<head>
 		<title><%= content_for?(:title) ? yield(:title) : "NexInnova Web Platform" %></title>
 		<!-- Stylesheets -->
-		<%= render "layouts/stylesheets" %>
 		<%= render "layouts/javascripts" %>
+
+		<%= render "layouts/stylesheets" %>
 	</head>
 	<body>
 		<!-- BEGIN .main-content-wrapper -->
@@ -18,6 +19,7 @@
 				<%= content_tag :div, msg, :class => "alert-message success",  :id => "flash_#{name}" %>
 				<% end %>
 				
+				
 				<%= yield %> <!-- BEGIN .homepage-slider-wrapper -->
 				<!-- BEGIN .homepage-block-1 -->
 				<!-- BEGIN .main-footer -->
@@ -26,6 +28,5 @@
 			<!-- END .main-content-wrapper -->
 		</div>
 		<!-- END body -->
-		
 	</body>
 </html>
