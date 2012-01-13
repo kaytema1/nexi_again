@@ -1,41 +1,11 @@
-<p>
-	<%= f.label :title %>
-	<br />
-	<%= f.text_field :title %>
-</p>
-<p>
-	<%= f.label :author %>
-	<br />
-	<%= f.text_field :author %>
-</p>
-<p>
-	<%= f.label :body %>
-	<br />
-	<%= f.text_area :body,  :class => :mceEditor %>
-</p>
-<p>
-	<%= f.label :category %>
-	<br />
-	<%= f.text_field :category %>
-</p>
-<p>
-	<%= f.label :region %>
-	<br />
-	<%= f.text_field :region %>
-</p>
-<p>
-	<%= f.label :status %>
-	<br />
-	<%= f.text_field :status %>
-</p>
-<p>
-	<%= f.label :page_id %>
-	<br />
-	<%= collection_select(:article, :page_id, Page.all, :id, :title, :prompt => 'Please select page') %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-</p>
-<p>
-	<%= f.label :image %>
-	<br />
-	<%= f.file_field :image %>
-</p>
+
+<tr>
+	<td><%= f.text_area :title, :style => "width : 160px; height: 80px;" %></td>
+	<td><%= f.text_field :author, :style => "width : 120px; "%></td>
+	<td><%= f.text_field :category, :style => "width : 150px; ", :class => 'category' %></td>
+	<!--<td><%= collection_select(:article, :category, Page.all, :id, :title, :style => "width : 120px;", :prompt => 'Edit Category') %> </td>
+	--><td><%= f.text_field :region, :style => "width : 130px; " %> </td>
+	<td><%= f.text_field :status, :style => "width : 100px; ", :class => 'status' %>
+		<!--<%= collection_select(:article, :status, ArticleStatus.all, :id, :status, :style => "width : 120px;", :prompt => 'Edit Status') %> --> <!--	<%= f.select :status, options_for_select([["Select One", :article ], "Submitted", "Published", "Draft" ]) %> </td><%= f.select :status, options_for_select(@status_options) ,:selected => :status %>
+	--></td><td><span style="margin-left: 25px;"> <%= f.check_box :published  ,:class => 'span'%></span></td>
+</tr>

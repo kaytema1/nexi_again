@@ -1,0 +1,12 @@
+<% title "Article Status" %>
+
+<p>
+  <strong>Status:</strong>
+  <%= @article_status.status %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_article_status_path(@article_status) %> |
+  <%= link_to "Destroy", @article_status, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", article_statuses_path %>
+</p>

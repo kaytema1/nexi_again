@@ -2,14 +2,13 @@ class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
   in_place_edit_for :article, :title
-
   protect_from_forgery :except => [:set_article_title]
   def index
     @articles = Article.all
   end
 
   def manage
-    @articles = Article.all
+    @articles = Article.paginate :page => params[:page], :per_page => 10, :order => 'created_at ASC'
 
   end
 
@@ -39,7 +38,7 @@ class ArticlesController < ApplicationController
 
     @article = Article.find(params[:id])
     respond_to do |format|
-      format.html { render :action => "show" }
+      format.html { render :action => "edit" }
       format.xml  { render :xml => @article }
     end
   end
@@ -61,6 +60,7 @@ class ArticlesController < ApplicationController
 
   def edit_individual
     @articles = Article.find(params[:article_ids])
+    @status_options = {'Submitted' => 'Submitted', 'Draft' => 'Draft', 'Published' => 'Published', 'Archived' => 'Archived' }
   end
 
   def update_individual

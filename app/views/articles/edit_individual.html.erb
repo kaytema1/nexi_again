@@ -1,12 +1,30 @@
 <% title "Edit Articles" %>
 
 <% form_tag update_individual_articles_path :html => {:multipart => true } do %>
-<% for article in @articles %>
-<%= fields_for "articles[]", article do |f| %> <h2><%= h article.title %></h2>
-<%= render "fields" , :f => f  %>
-<% end %>
-<% end %>
+<table class="zebra-striped">
+	<thead>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Category</th>
+		<th>Region</th>
+		<th>Status</th>
+		<th title="Click to Toggle All"> Published
+		<br />
+		<span style="margin-left: 25px;">
+			<input type="checkbox" class="checkall">
+		</span></th>
+		<th>
+	</thead>
+	<tbody>
+		<% for article in @articles %>
+		<%= fields_for "articles[]", article do |f| %>
+
+		<%= render "fields" , :f => f  %>
+		<% end %>
+	</tbody>
+	<% end %>
+</table>
 <p>
-	<%= submit_tag "Submit" %>
+	<%= submit_tag "Submit", :class => "btn primary large" %>
 </p>
 <% end %> 

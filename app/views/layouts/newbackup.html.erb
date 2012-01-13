@@ -1,0 +1,73 @@
+<div class="tabs-1">
+	<table>
+		<tr>
+			<td><a href="#" class="tab-1 kernel_triple_btn active" id="kernel_triple_popular_btn_kernel_3"><span>Popular</span></a></td>
+			<td><a href="#" class="tab-1 tab-1-disabled kernel_triple_btn" id="kernel_triple_recent_btn_kernel_3"><span>Recent</span></a></td>
+			<td><a href="#" class="tab-1 tab-1-disabled kernel_triple_btn" id="kernel_triple_comments_btn_kernel_3"><span>Comments</span></a></td>
+		</tr>
+	</table>
+	<!-- END .tabs-1 -->
+</div>
+<div id="kernel_triple_popular_kernel_3">
+	<!-- BEGIN .list -->
+	<div class="list">
+		<!-- BEGIN .item -->
+		<% for article in @articles %>
+		<div class="item">
+			<div class="image">
+				<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
+			</div>
+			<div class="text">
+				<h5><%= link_to article.title, article_path(article) %></h5>
+				<p>
+					<%= link_to "Read more", article_path(article) , :class => "more-link" %>
+				</p>
+			</div>
+			<!-- END .item -->
+		</div>
+		<!-- BEGIN .item -->
+		<% end %>
+	</div>
+</div>
+<div id="kernel_triple_recent_kernel_3" style="display: none;">
+	<!-- BEGIN .list -->
+	<div class="list">
+		<!-- BEGIN .item -->
+		<% for article in @articles %>
+		<div class="item">
+			<div class="image">
+				<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
+			</div>
+			<div class="text">
+				<h5><%= link_to article.title, article_path(article) %></h5>
+				<p>
+					<%= link_to "Read more", article_path(article) , :class => "more-link" %>
+				</p>
+			</div>
+			<!-- END .item -->
+		</div>
+		<!-- BEGIN .item -->
+		<% end %> <!-- END .list -->
+	</div>
+</div>
+<div id="kernel_triple_comments_kernel_3" style="display: none;">
+	<!-- BEGIN .list -->
+	<div class="list">
+		<!-- BEGIN .item -->
+		<% for article in @articles %>
+		<div class="item">
+			<div class="image">
+				<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
+			</div>
+			<div class="text">
+				<h5><%= link_to article.title, article_path(article) %></h5>
+				<p>
+					<%= link_to "Read more", article_path(article) , :class => "more-link" %>
+				</p>
+			</div>
+			<!-- END .item -->
+		</div>
+		<!-- BEGIN .item -->
+		<% end %>
+	</div>
+</div>

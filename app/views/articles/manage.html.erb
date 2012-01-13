@@ -2,14 +2,16 @@
 	<% form_tag url_for(:controller => 'articles', :action => 'edit_individual')  do %>
 	<table class="zebra-striped">
 		<thead>
-			<th></th>
+			<th>
+			<input type="checkbox" class="checkall">
+			</th>
 			<th>Title</th>
 			<th>Author </th>
-			<th>User Id </th>
-			<th>Date Created </th>
+			<th>Category</th>
+			<th>Created On </th>
 			<th>Status </th>
 			<th>Published </th>
-			<th></th>
+			</tr>
 		</thead>
 		<% for article in @articles %>
 		<tbody>
@@ -17,14 +19,13 @@
 				<td><%= check_box_tag "article_ids[]", article.id %></td>
 				<td> <%= article.title.html_safe[0..50] +(article.title.length > 50? "...": "")  %> </td>
 				<td> <%= article.author %> </td>
-				<td> <%= article.user_id %> </td>
+				<td> <%= article.category %> </td>
 				<td> <%= article.created_at.strftime("%D") %> </td>
 				<td> <%= article.status %> </td>
-				<td> <% if article.published? %> <span class="label success"> YES </td>
+				<td style="text-align: center"> <% if article.published? %> <span class="label success"> YES </td>
 				</span>
 				<% else %> <span class="label important"> NO </span>
-				<% end  %> 
-				<td><%= link_to "Preview", article %></td>
+				<% end  %> <td><%= link_to "Preview", article %></td>
 				<td><%= link_to "Edit", edit_article_path(article) %></td>
 				<td><%= link_to "Delete", article, :confirm => 'Are you sure?', :method => :delete %></td>
 			</tr>
@@ -32,5 +33,11 @@
 		<% end %>
 	</table>
 	<%= submit_tag "Edit Articles", :class => "btn  success" %>
+
 	<% end %>
+</div>
+<div class="pages">
+	<div class=" digg_pagination">
+		<%= will_paginate @articles %>
+	</div>
 </div>

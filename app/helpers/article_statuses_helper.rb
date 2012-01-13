@@ -1,0 +1,2 @@
+module ArticleStatusesHelper
+end

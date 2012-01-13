@@ -1,14 +1,57 @@
 <div class="sidebar">
-		<!-- BEGIN .sidebar-item .latest-news -->
-		<div class="sidebar-item">
-			<div class="latest-news">
-				<div class="sidebar-title">
-					<b>Other <%= @page.title %> news</b>
+	<!-- BEGIN .sidebar-item .latest-news -->
+	<div class="sidebar-item">
+		<div class="latest-news">
+			<div class="sidebar-title">
+				<b>Other <%= @page.title %> news</b>
+			</div>
+			<!-- BEGIN .list -->
+			<div class="list">
+				<!-- BEGIN .item -->
+				<% for article in @page_articles %>
+				<div class="item">
+					<div class="image">
+						<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
+					</div>
+					<div class="text">
+						<h5><%= link_to article.title, article_path(article) %></h5>
+						<p>
+							<%= link_to "Read more", article_path(article), :class => "more-link" %>
+						</p>
+					</div>
+					<!-- END .item -->
 				</div>
+				<% end %> <!-- BEGIN .item -->
+				<!-- END .list -->
+			</div>
+			<p class="show-all">
+				<a href="#" class="btn-1 btn-1-color-default"><span>Show all latest news</span></a>
+			</p>
+		</div>
+		<!-- END .sidebar-item .latest-news -->
+	</div>
+	<!-- BEGIN .sidebar-item .latest-activity -->
+	<div class="sidebar-item">
+		<div class="latest-activity">
+			<div class="sidebar-title">
+				<b>Latest activity</b>
+			</div>
+			<!-- BEGIN .tabs-1 -->
+				<div style="width: 195px;" class="tabs-1">
+				<table>
+					<tr>
+						<td><a href="#" class="tab-1 kernel_triple_btn active" id="kernel_triple_popular_btn_kernel_3"><span>Popular</span></a></td>
+						<td><a href="#" class="tab-1 tab-1-disabled kernel_triple_btn" id="kernel_triple_recent_btn_kernel_3"><span>Recent</span></a></td>
+						<td><a href="#" class="tab-1 tab-1-disabled kernel_triple_btn" id="kernel_triple_comments_btn_kernel_3"><span>Comments</span></a></td>
+					</tr>
+				</table>
+				<!-- END .tabs-1 -->
+			</div>
+			<div id="kernel_triple_popular_kernel_3">
 				<!-- BEGIN .list -->
 				<div class="list">
 					<!-- BEGIN .item -->
-					<% for article in @page_articles %>
+					<% for article in @articles %>
 					<div class="item">
 						<div class="image">
 							<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
@@ -16,133 +59,76 @@
 						<div class="text">
 							<h5><%= link_to article.title, article_path(article) %></h5>
 							<p>
-								<%= link_to "Read more", article_path(article), :class => "more-link" %>
+								<%= link_to "Read more", article_path(article) , :class => "more-link" %>
 							</p>
 						</div>
 						<!-- END .item -->
 					</div>
-					<% end %> <!-- BEGIN .item -->
-					<!-- END .list -->
-				</div>
-				<p class="show-all">
-					<a href="#" class="btn-1 btn-1-color-default"><span>Show all latest news</span></a>
-				</p>
-			</div>
-			<!-- END .sidebar-item .latest-news -->
-		</div>
-		<!-- BEGIN .sidebar-item .latest-activity -->
-		<div class="sidebar-item">
-			<div class="latest-activity">
-				<div class="sidebar-title">
-					<b>Latest activity</b>
-				</div>
-				<!-- BEGIN .tabs-1 -->
-				<div class="tabs-1">
-					<table>
-						<tr>
-							<td><a href="#" class="tab-1 kernel_triple_btn active" id="kernel_triple_popular_btn_kernel_3"><span>Popular</span></a></td>
-							<td><a href="#" class="tab-1 tab-1-disabled kernel_triple_btn" id="kernel_triple_recent_btn_kernel_3"><span>Recent</span></a></td>
-							<td><a href="#" class="tab-1 tab-1-disabled kernel_triple_btn" id="kernel_triple_comments_btn_kernel_3"><span>Comments</span></a></td>
-						</tr>
-					</table>
-					<!-- END .tabs-1 -->
-				</div>
-				<div id="kernel_triple_popular_kernel_3">
-					<!-- BEGIN .list -->
-					<div class="list">
-						<!-- BEGIN .item -->
-						<% for article in @articles %>
-						<div class="item">
-							<div class="image">
-								<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
-							</div>
-							<div class="text">
-								<h5><%= link_to article.title, article_path(article) %></h5>
-								<p>
-									<%= link_to "Read more", article_path(article) , :class => "more-link" %>
-								</p>
-							</div>
-							<!-- END .item -->
-						</div>
-						<!-- BEGIN .item -->
-						<% end %>
-					</div>
-				</div>
-				<div id="kernel_triple_recent_kernel_3" style="display: none;">
-					<!-- BEGIN .list -->
-					<div class="list">
-						<!-- BEGIN .item -->
-						<% for article in @articles %>
-						<div class="item">
-							<div class="image">
-								<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
-							</div>
-							<div class="text">
-								<h5><%= link_to article.title, article_path(article) %></h5>
-								<p>
-									<%= link_to "Read more", article_path(article) , :class => "more-link" %>
-								</p>
-							</div>
-							<!-- END .item -->
-						</div>
-						<!-- BEGIN .item -->
-						<% end %> <!-- END .list -->
-					</div>
-				</div>
-				<div id="kernel_triple_comments_kernel_3" style="display: none;">
-					<!-- BEGIN .list -->
-					<div class="list">
-						<!-- BEGIN .item -->
-						<% for article in @articles %>
-						<div class="item">
-							<div class="image">
-								<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
-							</div>
-							<div class="text">
-								<h5><%= link_to article.title, article_path(article) %></h5>
-								<p>
-									<%= link_to "Read more", article_path(article) , :class => "more-link" %>
-								</p>
-							</div>
-							<!-- END .item -->
-						</div>
-						<!-- BEGIN .item -->
-						<% end %>
-					</div>
+					<!-- BEGIN .item -->
+					<% end %>
 				</div>
 			</div>
-			<!-- END .sidebar-item .latest-activity -->
-		</div>
-		<!-- BEGIN .sidebar-item .latest-articles -->
-		<div class="sidebar-item last">
-			<div class="latest-articles">
-				<div class="sidebar-title">
-					<b>Latest Jobs</b>
-				</div>
+			<div id="kernel_triple_recent_kernel_3" style="display: none;">
 				<!-- BEGIN .list -->
 				<div class="list">
 					<!-- BEGIN .item -->
-					<% for job in @jobs %>
+					<% for article in @articles %>
 					<div class="item">
 						<div class="image">
-							<%= link_to image_tag(job.image.url, :size => "60x60", :class => "image"), job_path(job) %>
+							<%= link_to image_tag(article.image.url, :size => "60x60"), article_path(article) %>
 						</div>
 						<div class="text">
-							<h5><%= link_to job.title, job_path(job) %></h5>
+							<h5><%= link_to article.title, article_path(article) %></h5>
 							<p>
-								<%= link_to "Read more", job_path(job) , :class => "more-link" %>
+								<%= link_to "Read more", article_path(article) , :class => "more-link" %>
 							</p>
 						</div>
 						<!-- END .item -->
 					</div>
-					<% end %> <!-- BEGIN .item -->
-					<!-- END .list -->
+					<!-- BEGIN .item -->
+					<% end %> <!-- END .list -->
 				</div>
-				<p class="show-all">
-					<a href="#" class="btn-1 btn-1-color-default"><span>Show all latest news</span></a>
-				</p>
 			</div>
-			<!-- END .sidebar-item .latest-articles -->
+			<div id="kernel_triple_comments_kernel_3" style="display: none;">
+				<!-- BEGIN .list -->
+				<div class="list">
+					<!-- BEGIN .item -->
+				
+				</div>
+			</div>
 		</div>
-		<!-- END .sidebar -->
+		<!-- END .sidebar-item .latest-activity -->
 	</div>
+	<!-- BEGIN .sidebar-item .latest-articles -->
+	<div class="sidebar-item last">
+		<div class="latest-articles">
+			<div class="sidebar-title">
+				<b>Latest Jobs</b>
+			</div>
+			<!-- BEGIN .list -->
+			<div class="list">
+				<!-- BEGIN .item -->
+				<% for job in @jobs %>
+				<div class="item">
+					<div class="image">
+						<%= link_to image_tag(job.image.url, :size => "60x60", :class => "image"), job_path(job) %>
+					</div>
+					<div class="text">
+						<h5><%= link_to job.title, job_path(job) %></h5>
+						<p>
+							<%= link_to "Read more", job_path(job) , :class => "more-link" %>
+						</p>
+					</div>
+					<!-- END .item -->
+				</div>
+				<% end %> <!-- BEGIN .item -->
+				<!-- END .list -->
+			</div>
+			<p class="show-all">
+				<a href="#" class="btn-1 btn-1-color-default"><span>Show all latest news</span></a>
+			</p>
+		</div>
+		<!-- END .sidebar-item .latest-articles -->
+	</div>
+	<!-- END .sidebar -->
+</div>

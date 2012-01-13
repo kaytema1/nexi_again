@@ -1,5 +1,7 @@
 Nexiweb::Application.routes.draw do
 
+  resources :article_statuses
+
 #devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin", :sign_out => "logout" }
   devise_for :users do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session

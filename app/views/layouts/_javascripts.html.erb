@@ -1,4 +1,7 @@
 <%= javascript_include_tag "jquery.min.js" %>
+<%= javascript_include_tag "js/jquery-1.6.2.min.js" %>
+<%= javascript_include_tag "js/jquery-ui-1.8.16.custom.min.js" %>
+<%= javascript_include_tag "js/demo.js" %>
 <%= javascript_include_tag "jrails.js" %>
 <%= javascript_include_tag "jquery.placeholder.min.js" %>
 <%= javascript_include_tag "cufon-yui.js" %>
@@ -11,6 +14,15 @@
 
 <%= csrf_meta_tag %>
 <%= yield(:head) %>
+<script type="text/javascript">
+	$(function() {// this line makes sure this code runs on page load
+		$('.checkall').click(function() {
+
+			$(document).find(':checkbox').attr('checked', this.checked);
+		});
+	});
+
+</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		// hide #back-top first
@@ -192,13 +204,6 @@
 				input.removeAttr('disabled').val(input.data('enable-with'));
 			});
 		});
-	});
-
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		/* Activating Best In Place */
-		jQuery(".best_in_place").best_in_place();
 	});
 
 </script>
