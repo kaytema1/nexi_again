@@ -18,7 +18,7 @@
 <p>
 	<%= f.label :category %>
 	<br />
-	<%= collection_select(:article, :category, Page.all, :id, :title, :prompt => 'Please select Category') %>
+	<%= collection_select(:article, :category, Page.all, :id, :title, :prompt => 'Please Select Category') %>
 </p>
 <p>
 	<%= f.label :region %>
@@ -29,17 +29,22 @@
 <p>
 	<%= f.label :status %>
 	<br />
-	<%= collection_select(:article, :status, ArticleStatus.all, :id, :status, :prompt => 'Please select Status') %>
+	<%= collection_select(:article, :status, ArticleStatus.all, :id, :status, :prompt => 'Please Select Status') %>
 </p>
 <%else %>
 <%= f.hidden_field :status, :value => "Draft" %>
 <% end %>
+
+<% if current_user.admin? %>
 <p>
 	<%= f.label :page_id %>
 	<br />
 	<%= collection_select(:article, :page_id, Page.all, :id, :title, :prompt => 'Please select page') %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
 </p>
+<% else %>
+
+<% end %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 <p>
 	<%= f.label :image %>
 	<br />

@@ -1,12 +1,14 @@
 Nexiweb::Application.routes.draw do
 
   resources :article_statuses
+  resources :microposts, :only => [:create, :destroy]
 
-#devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin", :sign_out => "logout" }
+  #devise_for :users, :path_names => { :sign_up => "register" , :sign_in => "signin", :sign_out => "logout" }
   devise_for :users do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
     get "/users/sign_up" => "devise/registrations#new", :as => :new_user_registration
     get "/users/sign_in" => "devise/sessions#new", :as => :new_user_session
+
   end
 
   # resources :subdomains, :shallow => true
@@ -28,7 +30,13 @@ Nexiweb::Application.routes.draw do
   resources :pages
 
   root :to => "pages#index"
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, :only => [:create, :destroy]
+
   resources :jobs
 
   resources :roles

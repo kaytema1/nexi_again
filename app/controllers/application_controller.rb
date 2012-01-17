@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  include NexiSessionsHelper
+
+  protect_from_forgery
+  layout :layout_by_resource
+
   before_filter :pages, :articles, :jobs, :featured_published_articles, :first_page_articles, :second_page_articles, :third_page_articles
   before_filter :store_location
   def store_location
@@ -10,8 +15,10 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || user_path(current_user)
   end
 
-  protect_from_forgery
-  layout :layout_by_resource
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    clear_return_to
+  end
 
   def pages
     @pages = Page.all
@@ -49,6 +56,10 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+  def clear_return_to
+    session[:return_to] = nil
   end
 
 end

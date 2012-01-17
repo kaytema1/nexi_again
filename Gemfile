@@ -10,13 +10,14 @@ gem 'nifty-generators'
 gem "will_paginate", "~> 3.0.pre4"
 gem 'devise', '1.5.3'
 gem 'cancan'
-gem 'friendly_id', '3.2.1'
+#gem 'friendly_id', '3.2.1'
 gem 'jquery-rails'
 #gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'cocaine'
 gem 'rmagick'
 #gem "best_in_place", "~> 0.2.0"
 gem 'in_place_editing'
+gem 'faker'
 #gem 'sunspot_rails'
 #gem 'sunspot_solr'
 #gem 'progress_bar'
