@@ -4,8 +4,15 @@ gem 'rails', '3.0.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'pg'
-#gem 'sqlite3'
+group :production do
+  gem "pg"
+end
+
+group :development do
+  gem "sqlite3-ruby", "~> 1.3.0", :require => "sqlite3"
+end
+
+
 gem 'nifty-generators'
 gem "will_paginate", "~> 3.0.pre4"
 gem 'devise', '1.5.3'
