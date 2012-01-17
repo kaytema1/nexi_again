@@ -4,8 +4,8 @@ gem 'rails', '3.0.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
+gem 'pg'
+#gem 'sqlite3'
 gem 'nifty-generators'
 gem "will_paginate", "~> 3.0.pre4"
 gem 'devise', '1.5.3'
