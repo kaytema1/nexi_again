@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= content_for?(:title) ? yield(:title) : "NexInnova Web Platform" %></title>
+		<!-- Stylesheets -->
+		<%= render "layouts/javascripts" %>
+
+		<%= render "layouts/stylesheets1" %>
+	</head>
+	<body>
+		<!-- BEGIN .main-content-wrapper -->
+		<div class="main-content-wrapper">
+			<!-- BEGIN .main-content -->
+			<div class="main-content">
+				<!-- BEGIN .main-header -->
+				<%= render "layouts/main_header"%> <!-- BEGIN .breaking-wrapper -->
+				<%= render "layouts/breaking"%>
+				<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :class => "alert-message success",  :id => "flash_#{name}" %>
+				<% end %>
+
+				<%= yield %> <!-- BEGIN .homepage-slider-wrapper -->
+				<!-- BEGIN .homepage-block-1 -->
+				<!-- BEGIN .main-footer -->
+				<%= render "layouts/main_footer"%> <!-- END .main-content -->
+			</div>
+			<!-- END .main-content-wrapper -->
+		</div>
+		<!-- END body -->
+	</body>
+</html>

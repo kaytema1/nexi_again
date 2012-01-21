@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  layout 'layout', :only => [:index]
   before_filter :authenticate_user!, :except => [:show, :index]
   uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
   in_place_edit_for :article, :title
